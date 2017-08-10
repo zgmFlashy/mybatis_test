@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.cascade.test.mapper.UserMapper">
+	<!-- 用户 -->
+	<resultMap type="user1" id="userMap">
+		<id property="fdId" column="fd_id" />
+		<result property="fdName" column="fd_name" />
+		<result property="fdPhone" column="fd_phone" />
+		<result property="fdAddress" column="fd_address" />
+	</resultMap>
+	
+	<select id="getUserById" resultMap="userMap">
+		select * from g_user where fd_id = #{fdId}
+	</select>
+	
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.cascade.test.mapper.OrdersMapper">
+	<!-- 订单 -->
+	<resultMap type="orders1" id="ordersMap">
+		<id property="fdId" column="fd_id" />
+		<result property="fdName" column="fd_name" />
+		<result property="fdTotalPrices" column="fd_total_prices" />
+		<result property="fdOrderDateTime" column="fd_order_datetime" />
+		
+		<!-- 用户，一对一 -->
+		<association property="user" column="fd_user_id"
+			select="mybatis.cascade.test.mapper.UserMapper.getUserById" />
+		
+		<!-- 订单明细项，一对多 -->
+		<collection property="orderItemList" column="fd_id" 
+			select="mybatis.cascade.test.mapper.OrderItemMapper.getOrderItemListByOrderId" />
+			
+	</resultMap>
+	
+	<select id="getOrdersById" resultMap="ordersMap">
+		select * from g_orders where fd_id = #{fdId}
+	</select>
+	
+	<select id="getOrdersListByUserId" resultMap="ordersMap">
+		select * from g_orders where fd_user_id = #{fdUserId}
+	</select>
+</mapper>

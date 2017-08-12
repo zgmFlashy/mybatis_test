@@ -4,10 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import mybatis.cascade.test.mapper.OrderDetailMapper;
-import mybatis.cascade.test.mapper.OrderItemMapper;
 import mybatis.cascade.test.mapper.OrdersMapper;
-import mybatis.cascade.test.mapper.UserMapper;
 import mybatis.cascade.test.po.Commodity;
 import mybatis.cascade.test.po.OrderDetail;
 import mybatis.cascade.test.po.OrderItem;
